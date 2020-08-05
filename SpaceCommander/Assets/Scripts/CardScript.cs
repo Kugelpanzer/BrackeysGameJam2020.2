@@ -115,6 +115,16 @@ public class CardScript : MonoBehaviour
 
         if (doSpawn)
         {
+            /*
+    protected bool doSpawn = false;
+    protected int spawnAmount = 0;
+    protected bool fireWhenSpawned = false;
+            */
+            for(int i=0; i < spawnAmount; i++)
+            {
+                PlayerController.instance.SpawnFighter();
+
+            }
 
         }
     }
