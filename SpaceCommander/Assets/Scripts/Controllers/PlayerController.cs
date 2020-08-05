@@ -16,8 +16,16 @@ public class PlayerController : MonoBehaviour
 
     public void SpawnFighter()
     {
-        Instantiate(fighterPrefab);
-        fighters.Add(fighterPrefab.GetComponent<BaseFighter>());
+        int index = FreeFighterSpace();
+        if (index != -1)
+        {
+            GameObject currentFighter = Instantiate(fighterPrefab);
+
+            fighters[index] = currentFighter.GetComponent<BaseFighter>();
+            currentFighter.GetComponent<BaseFighter>().location = index;
+            currentFighter.transform.position = fighterPositions[index].transform.position;
+        }
+        //fighters.Add(fighterPrefab.GetComponent<BaseFighter>());
 
     }
 
