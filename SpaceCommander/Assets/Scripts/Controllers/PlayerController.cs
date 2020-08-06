@@ -7,10 +7,12 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 	private static System.Random rng = new System.Random ();
+    public int numberOfCards = 10;
+    public List<Card> deck = new List<Card>();
 	public static PlayerController instance;
 
     public List<GameObject> fighterPositions = new List<GameObject>();// positions where fighters can spawn on screen
-    private List<Card> allCards = new List<Card>();
+
 
     public GameObject fighterPrefab;
 
@@ -50,7 +52,7 @@ public class PlayerController : MonoBehaviour
     {
 		return fighters.ToList ();
     }
-
+    
 	public List<int> FreeSpaceLocations ()
 	{
 		return fighters
@@ -66,6 +68,26 @@ public class PlayerController : MonoBehaviour
 		if ( freeLocations.Count == 0 ) return -1;
 		return freeLocations.OrderBy ( i => rng.Next () ).First ();
 	}
+
+    private void MakeDeck()
+    {
+        List<Card> allCards = Resources.LoadAll<Card>("Cards").ToList() ;
+        List<Card> cardPool=new List<Card> ();
+        foreach(Card c in allCards)
+        {
+            for (int i = 0;i< c.value;i++)
+            {
+                cardPool.Add(c);
+            }
+        }
+        for(int i = 0; i < numberOfCards; i++)
+        {
+            int rand = UnityEngine.Random.Range(0, cardPool.Count);
+            deck.Add(cardPool[rand]);
+            cardPool.RemoveAt(rand);
+        }
+
+    }
 
 	// Update is called once per frame
 	void Update ()
