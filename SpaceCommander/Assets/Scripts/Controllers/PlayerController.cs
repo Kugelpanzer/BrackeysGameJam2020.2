@@ -6,8 +6,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-
-    public static PlayerController instance;
+	private static System.Random rng = new System.Random ();
+	public static PlayerController instance;
 
     public List<GameObject> fighterPositions = new List<GameObject>();// positions where fighters can spawn on screen
 
@@ -50,13 +50,24 @@ public class PlayerController : MonoBehaviour
 		return fighters.ToList ();
     }
 
-    public int FreeFighterSpace()
-    {
-		return Array.FindIndex ( fighters, i => i == null );
+	public List<int> FreeSpaceLocations ()
+	{
+		return fighters
+			.Select ( ( enemy, index ) => new { enemy, index } )
+			.Where ( i => i == null )
+			.Select ( i => i.index )
+			.ToList ();
+	}
+
+	public int FreeFighterSpace ()
+	{
+		List<int> freeLocations = FreeSpaceLocations ();
+		if ( freeLocations.Count == 0 ) return -1;
+		return freeLocations.OrderBy ( i => rng.Next () ).First ();
 	}
 
 	// Update is called once per frame
-	void Update()
+	void Update ()
     {
         
     }

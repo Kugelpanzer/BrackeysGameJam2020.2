@@ -38,13 +38,24 @@ public class EnemyController : MonoBehaviour
 		return AllEnemies ().OrderBy ( i => rng.Next () ).Take ( amount ).ToList ();
 	}
 
+	public List<int> FreeSpaceLocations()
+	{
+		return enemyList
+			.Select ( ( enemy, index ) => new { enemy, index } )
+			.Where ( i => i == null )
+			.Select ( i => i.index )
+			.ToList ();
+	}
+
 	public int FreeFighterSpace()
     {
-		return Array.FindIndex ( enemyList, i => i == null );
-    }
+		List<int> freeLocations = FreeSpaceLocations ();
+		if ( freeLocations.Count == 0 ) return -1;
+		return freeLocations.OrderBy ( i => rng.Next () ).First ();
+	}
 
-    // Update is called once per frame
-    void Update()
+	// Update is called once per frame
+	void Update()
     {
         
     }
