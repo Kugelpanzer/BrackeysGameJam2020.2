@@ -12,7 +12,7 @@ public class CardScript : MonoBehaviour
 
 
     protected string cardName = "Default";
-    protected string descrtiption = "";
+    protected string description = "";
     [HideInInspector]
     public int value = 1;
 
