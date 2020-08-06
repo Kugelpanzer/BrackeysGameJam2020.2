@@ -34,6 +34,7 @@ public class CardScript : MonoBehaviour
 
     private void Awake()
     {
+        GetComponent<SpriteRenderer>().sprite = cardData.image;
         cardName = cardData.cardName;
         descrtiption = cardData.descrtiption;
         value = cardData.value;
