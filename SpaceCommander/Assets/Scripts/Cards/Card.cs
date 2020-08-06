@@ -15,6 +15,8 @@ public class Card : ScriptableObject
 
     [Tooltip("Chance that card will be added to the pool")]
     public int value = 1;
+
+    public Sprite image;
 //------------------------------------------------------------------------------------------
     [Header("Damage")]
 

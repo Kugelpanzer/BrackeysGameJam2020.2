@@ -12,7 +12,7 @@ public class CardScript : MonoBehaviour
 
 
     protected string cardName = "Default";
-    protected string descrtiption = "";
+    protected string description = "";
     [HideInInspector]
     public int value = 1;
 
@@ -36,7 +36,7 @@ public class CardScript : MonoBehaviour
     {
         GetComponent<SpriteRenderer>().sprite = cardData.image;
         cardName = cardData.cardName;
-        descrtiption = cardData.description;
+        description = cardData.description;
         value = cardData.value;
         doDamage = cardData.doDamage;
         targetType = cardData.targetType;
