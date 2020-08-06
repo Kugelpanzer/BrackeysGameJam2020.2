@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+	private static System.Random rng = new System.Random ();
     public ActionEnum currentAction;
     public BaseEnemy[] enemyList;
     public List<GameObject> lanePositions = new List<GameObject>(); // list of points where enemies will spawn
@@ -28,28 +30,17 @@ public class EnemyController : MonoBehaviour
 
     public List<BaseEnemy> AllEnemies()
     {
-        List<BaseEnemy> allEnemies = new List<BaseEnemy>();
-        for (int i = 0; i < enemyList.Length; i++)
-        {
-            if (enemyList[i] != null)
-            {
-                allEnemies.Add(enemyList[i]);
-            }
-        }
-        return allEnemies;
-
+		return enemyList.Where( i => i != null ).ToList ();
     }
 
-    public int FreeFighterSpace()
-    {
-        int value = -1;
-        for (int i = 0; i < enemyList.Length; i++)
-        {
-            if (enemyList[i] == null)
-                value = i;
+	public List<BaseEnemy> RandomEnemies(int amount)
+	{
+		return AllEnemies ().OrderBy ( i => rng.Next () ).Take ( amount ).ToList ();
+	}
 
-        }
-        return value;
+	public int FreeFighterSpace()
+    {
+		return Array.FindIndex ( enemyList, i => i == null );
     }
 
     // Update is called once per frame

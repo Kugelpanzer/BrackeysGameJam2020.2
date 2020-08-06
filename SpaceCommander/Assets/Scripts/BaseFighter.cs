@@ -28,30 +28,8 @@ public class BaseFighter : BaseDamagable
         
     }
 
-
-
-    private List<BaseEnemy> GetRandomEnemies(int amount=1)
-    {
-        List<BaseEnemy> allEnemies = new List<BaseEnemy>();
-        List<BaseEnemy> targetList = new List<BaseEnemy>();
-        for (int i = 0; i < EnemyController.instance.enemyList.Length; i++)
-        {
-            if (EnemyController.instance.enemyList[i] != null)
-            {
-                allEnemies.Add(EnemyController.instance.enemyList[i]);
-            }
-        }
-        for (int i = 0; i < amount; i++)
-        {
-            if (allEnemies.Count != 0)
-            {
-                int rand = Random.Range(0, allEnemies.Count);
-                targetList.Add(allEnemies[rand]);
-                allEnemies.RemoveAt(rand);
-            }
-
-        }
-
-        return targetList ;
-    }
+	private List<BaseEnemy> GetRandomEnemies ( int amount = 1 )
+	{
+		return EnemyController.instance.RandomEnemies ( amount );
+	}
 }

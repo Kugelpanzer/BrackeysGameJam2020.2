@@ -25,7 +25,7 @@ public class BaseDamagable : MonoBehaviour
     }
     public virtual void Death()
     {
-
+		// mora i kontroler da ga ukloni iz liste, al to se poziva spolja
     }
 
     public void DestroyObject()
