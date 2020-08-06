@@ -7,6 +7,7 @@ public class CardScript : MonoBehaviour
 {
     public Card cardData;
 	public bool isPlayed = false;
+	public Vector3 MoveTowardsHere;
 
     private List<BaseEnemy> targetList = new List<BaseEnemy>();
 
@@ -51,7 +52,15 @@ public class CardScript : MonoBehaviour
         fireWhenSpawned = cardData.fireWhenSpawned;
 
     }
-    public void SetTargets(List<BaseEnemy> targetList)
+
+	private void Update ()
+	{
+		Vector3 position = transform.position;
+		Vector3 delta = MoveTowardsHere - position;
+		transform.position = position + delta * Time.deltaTime;
+	}
+
+	public void SetTargets(List<BaseEnemy> targetList)
     {
         this.targetList = targetList;
     }
