@@ -33,7 +33,7 @@ public class CardScript : MonoBehaviour
     protected int spawnAmount = 0;
     protected bool fireWhenSpawned = false;
 
-    private void Awake()
+    private void Start()
     {
         GetComponent<SpriteRenderer>().sprite = cardData.image;
         cardName = cardData.cardName;
@@ -162,5 +162,10 @@ public class CardScript : MonoBehaviour
         }
 
         //return allEnemies;
+    }
+
+    public void CardInit()
+    {
+
     }
 }
