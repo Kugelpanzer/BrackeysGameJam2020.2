@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
 	public static PlayerController instance;
 
     public List<GameObject> fighterPositions = new List<GameObject>();// positions where fighters can spawn on screen
+    private List<Card> allCards = new List<Card>();
 
     public GameObject fighterPrefab;
 
