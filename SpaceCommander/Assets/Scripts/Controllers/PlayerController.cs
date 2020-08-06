@@ -65,8 +65,9 @@ public class PlayerController : MonoBehaviour
 	public int FreeFighterSpace ()
 	{
 		List<int> freeLocations = FreeSpaceLocations ();
-		if ( freeLocations.Count == 0 ) return -1;
-		return freeLocations.OrderBy ( i => rng.Next () ).First ();
+		int size = freeLocations.Count;
+		if ( size == 0 ) return -1;
+		return freeLocations [rng.Next ( size )];
 	}
 
     private void MakeDeck()
