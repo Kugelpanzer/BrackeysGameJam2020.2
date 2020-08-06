@@ -6,7 +6,7 @@ using UnityEngine;
 public class CardScript : MonoBehaviour
 {
     public Card cardData;
-    public bool playEnabled=true;
+	public bool isPlayed = false;
 
     private List<BaseEnemy> targetList = new List<BaseEnemy>();
 

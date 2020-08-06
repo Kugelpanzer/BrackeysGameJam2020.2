@@ -8,13 +8,13 @@ public class PlayerController : MonoBehaviour
 {
 	private static System.Random rng = new System.Random ();
     public int numberOfCards = 10;
-    public List<Card> deck = new List<Card>();
+    public List<CardScript> deck = new List<CardScript> ();
 	public int NextCardInDeck = 0;
 	public bool MustRewind = false;
 	public static PlayerController instance;
 
     public List<GameObject> fighterPositions = new List<GameObject>();// positions where fighters can spawn on screen
-
+	public List<GameObject> CardPositions = new List<GameObject> ();
 
     public GameObject fighterPrefab;
 
@@ -91,6 +91,7 @@ public class PlayerController : MonoBehaviour
         for(int i = 0; i < numberOfCards; i++)
         {
             int rand = UnityEngine.Random.Range(0, cardPool.Count);
+			// TODO inicijalizacija iz prefaba
             deck.Add(cardPool[rand]);
             cardPool.RemoveAt(rand);
         }
@@ -114,7 +115,7 @@ public class PlayerController : MonoBehaviour
 	public void Play()
 	{
 		// play cards
-		deck[NextCardInDeck].doEffect ();
+		deck[NextCardInDeck].ExecuteCard ();
 
 		// player attacks
 		foreach ( BaseFighter fighter in AllFighters () ) fighter.Attack ();
@@ -157,7 +158,7 @@ public class PlayerController : MonoBehaviour
 
 	private void FadeBackAllCards ()
 	{
-		foreach ( Card card in deck ) card.isPlayed = false;
+		foreach ( CardScript card in deck ) card.isPlayed = false;
 	}
 
 	// Update is called once per frame

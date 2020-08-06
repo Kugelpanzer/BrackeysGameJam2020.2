@@ -7,8 +7,6 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Card", menuName = "Card")]
 public class Card : ScriptableObject
 {
-	public bool isPlayed = false;
-
     public string cardName = "Default";
 
 
