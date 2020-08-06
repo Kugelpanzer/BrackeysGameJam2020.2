@@ -11,7 +11,9 @@ public class EnemyController : MonoBehaviour
     public BaseEnemy[] enemyList;
     public List<GameObject> lanePositions = new List<GameObject>(); // list of points where enemies will spawn
 
-    public static EnemyController instance;
+	public GameObject EnemyPrefab;
+
+	public static EnemyController instance;
     // Start is called before the first frame update
     void Awake()
     {
@@ -27,8 +29,18 @@ public class EnemyController : MonoBehaviour
         enemyList = new BaseEnemy[lanePositions.Count];
     }
 
+	public void SpawnEnemy ()
+	{
+		int index = FreeEnemySpace ();
+		if ( index == -1 ) return;
 
-    public List<BaseEnemy> AllEnemies()
+		GameObject newEnemy = Instantiate ( EnemyPrefab );
+
+		newEnemy.transform.position = lanePositions [index].transform.position;
+		enemyList [index] = newEnemy.GetComponent<BaseEnemy> ();
+	}
+
+	public List<BaseEnemy> AllEnemies()
     {
 		return enemyList.Where( i => i != null ).ToList ();
     }
@@ -47,12 +59,27 @@ public class EnemyController : MonoBehaviour
 			.ToList ();
 	}
 
-	public int FreeFighterSpace()
+	public int FreeEnemySpace()
     {
 		List<int> freeLocations = FreeSpaceLocations ();
 		int size = freeLocations.Count;
 		if ( size == 0 ) return -1;
 		return freeLocations [rng.Next ( size )];
+	}
+
+	public void Attack ()
+	{
+		foreach ( BaseEnemy enemy in AllEnemies () ) enemy.Attack ();
+	}
+
+	public void Spawn (int amount)
+	{
+		for ( int counter = 0; counter < amount; counter++ ) SpawnEnemy ();
+	}
+
+	public void Upgrade ()
+	{
+		foreach ( BaseEnemy enemy in AllEnemies () ) enemy.Upgrade ();
 	}
 
 	// Update is called once per frame
