@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
 
     public List<GameObject> fighterPositions = new List<GameObject>();// positions where fighters can spawn on screen
 	public List<GameObject> CardPositions = new List<GameObject> ();
+	public GameObject DiscardPosition = new GameObject ();
+	public float DiscardStackDelta = 0.01f;
 
     public GameObject fighterPrefab;
 
@@ -64,7 +66,7 @@ public class PlayerController : MonoBehaviour
 	public List<int> FreeSpaceLocations ()
 	{
 		return fighters
-			.Select ( ( enemy, index ) => new { enemy, index } )
+			.Select ( ( fighter, index ) => new { fighter, index } )
 			.Where ( i => i == null )
 			.Select ( i => i.index )
 			.ToList ();
@@ -111,10 +113,21 @@ public class PlayerController : MonoBehaviour
 			if (! deck[counter].isPlayed)
 			{
 				NextCardInDeck = counter;
+				MoveCardLocations ();
 				return;
 			}
 		}
 		MustRewind = true;
+	}
+
+	private void MoveCardLocations()
+	{
+		for ( int counter = 0; counter < numberOfCards; counter++ )
+		{
+			int position = counter - NextCardInDeck;
+			if ( position < 0 ) position += numberOfCards;
+			deck [counter].MoveTowardsHere = CardPositions [position].transform.position;
+		}
 	}
 
 	public void Play()
@@ -154,11 +167,21 @@ public class PlayerController : MonoBehaviour
 		EnemyController.instance.Upgrade ();
 
 		// rewind
+		MoveCardToDiscardPile ( deck [NextCardInDeck] );
 		deck.RemoveAt ( NextCardInDeck );
 		numberOfCards--;
 		if ( position > NextCardInDeck ) position--;
 		FadeBackAllCards ();
 		NextCardInDeck = position;
+	}
+
+	private void MoveCardToDiscardPile(CardScript card)
+	{
+		card.isPlayed = true;
+		Vector3 DiscardLocation = DiscardPosition.transform.position;
+		card.MoveTowardsHere = DiscardLocation;
+		DiscardLocation.y = DiscardLocation.y + DiscardStackDelta;
+		DiscardPosition.transform.position = DiscardLocation;
 	}
 
 	private void FadeBackAllCards ()
