@@ -1,4 +1,6 @@
 ﻿using System.Collections;
+using System;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -46,31 +48,16 @@ public class PlayerController : MonoBehaviour
 
     public List<BaseFighter> AllFighters()
     {
-        List<BaseFighter> allFighters=new List<BaseFighter>();
-        for(int i= 0; i< fighters.Length; i++)
-        {
-            if (fighters[i] != null)
-            {
-                allFighters.Add(fighters[i]);
-            }
-        }
-        return allFighters;
-        
+		return fighters.ToList ();
     }
 
     public int FreeFighterSpace()
     {
-        int value = -1;
-        for (int i = 0; i < fighters.Length; i++)
-        {
-            if (fighters[i] == null)
-                value = i;
+		return Array.FindIndex ( fighters, i => i == null );
+	}
 
-        }
-        return value;
-    }
-    // Update is called once per frame
-    void Update()
+	// Update is called once per frame
+	void Update()
     {
         
     }
