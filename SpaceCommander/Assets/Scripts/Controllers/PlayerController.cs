@@ -8,9 +8,9 @@ public class PlayerController : MonoBehaviour
 {
 	private static System.Random rng = new System.Random ();
     public int numberOfCards = 10;
-    public List<Card> deck = new List<Card>(); // deck[0] je prva sledeca karta
-	public List<Card> PlayedCards = new List<Card> ();
-	public List<Card> WindedCards = new List<Card> ();
+    public List<Card> deck = new List<Card>();
+	public int NextCardInDeck = 0;
+	public bool MustRewind = false;
 	public static PlayerController instance;
 
     public List<GameObject> fighterPositions = new List<GameObject>();// positions where fighters can spawn on screen
@@ -97,12 +97,24 @@ public class PlayerController : MonoBehaviour
 
     }
 
-	public void PlayCard(Card card)
+	private void MoveToNextCard ()
+	{
+		for (int counter = NextCardInDeck + 1; counter != NextCardInDeck; counter ++ )
+		{
+			if ( counter == numberOfCards ) counter = 0;
+			if (! deck[counter].isPlayed)
+			{
+				NextCardInDeck = counter;
+				return;
+			}
+		}
+		MustRewind = true;
+	}
+
+	public void Play()
 	{
 		// play cards
-		PlayedCards.Add ( deck [0] );
-		deck.RemoveAt ( 0 );
-		card.doEffect ();
+		deck[NextCardInDeck].doEffect ();
 
 		// player attacks
 		foreach ( BaseFighter fighter in AllFighters () ) fighter.Attack ();
@@ -112,27 +124,40 @@ public class PlayerController : MonoBehaviour
 
 		// spawn 1 enemy
 		EnemyController.instance.Spawn ( 1 );
+
+		// move to next card
+		deck [NextCardInDeck].isPlayed = true;
+		MoveToNextCard ();
 	}
 
 	public void Wind ()
 	{
-		// wind
-		WindedCards.Add ( deck [0] );
-		deck.RemoveAt (0);
-
 		// spawn 2 enemies
 		EnemyController.instance.Spawn ( 2 );
+
+		// wind
+		MoveToNextCard ();
 	}
 
-	public void Rewind(Card topCard)
+	public void Rewind(int position)
 	{
-		// rewind
-
 		// spawn 1 enemy
 		EnemyController.instance.Spawn ( 1 );
 
 		// upgrade enemies
 		EnemyController.instance.Upgrade ();
+
+		// rewind
+		deck.RemoveAt ( NextCardInDeck );
+		numberOfCards--;
+		if ( position > NextCardInDeck ) position--;
+		FadeBackAllCards ();
+		NextCardInDeck = position;
+	}
+
+	private void FadeBackAllCards ()
+	{
+		foreach ( Card card in deck ) card.isPlayed = false;
 	}
 
 	// Update is called once per frame

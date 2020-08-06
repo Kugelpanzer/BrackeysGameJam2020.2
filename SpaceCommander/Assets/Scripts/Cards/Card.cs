@@ -7,13 +7,13 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Card", menuName = "Card")]
 public class Card : ScriptableObject
 {
-
+	public bool isPlayed = false;
 
     public string cardName = "Default";
 
 
     [TextArea]
-    public string descrtiption = "";
+    public string description = "";
 
     [Tooltip("Chance that card will be added to the pool")]
     public int value = 1;

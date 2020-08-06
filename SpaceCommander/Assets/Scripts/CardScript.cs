@@ -36,7 +36,7 @@ public class CardScript : MonoBehaviour
     {
         GetComponent<SpriteRenderer>().sprite = cardData.image;
         cardName = cardData.cardName;
-        descrtiption = cardData.descrtiption;
+        descrtiption = cardData.description;
         value = cardData.value;
         doDamage = cardData.doDamage;
         targetType = cardData.targetType;
