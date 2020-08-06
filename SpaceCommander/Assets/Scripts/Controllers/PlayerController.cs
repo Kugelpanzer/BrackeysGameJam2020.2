@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
 	private static System.Random rng = new System.Random ();
     public int numberOfCards = 10;
     public List<CardScript> deck = new List<CardScript> ();
+	public GameObject cardPrefab;
 	public int NextCardInDeck = 0;
 	public bool MustRewind = false;
 	public static PlayerController instance;
@@ -92,8 +93,12 @@ public class PlayerController : MonoBehaviour
         {
             int rand = UnityEngine.Random.Range(0, cardPool.Count);
 			// TODO inicijalizacija iz prefaba
-            deck.Add(cardPool[rand]);
-            cardPool.RemoveAt(rand);
+			GameObject card = Instantiate(cardPrefab);
+			card.GetComponent<CardScript>().cardData = cardPool[rand];
+			deck.Add(card.GetComponent<CardScript>());
+			card.GetComponent<CardScript>().CardInit();//Dodati posle da mu se sprite dodeli i jos nesto ako je potrebno
+
+			cardPool.RemoveAt(rand);
         }
 
     }
