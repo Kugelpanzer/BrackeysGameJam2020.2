@@ -68,6 +68,11 @@ public class EnemyController : MonoBehaviour
 		return freeLocations [rng.Next ( size )];
 	}
 
+	public bool HasFreeEnemySpace()
+	{
+		return enemyList.Any ( i => i == null );
+	}
+
 	public void Attack ()
 	{
 		foreach ( BaseEnemy enemy in AllEnemies () ) enemy.Attack ();

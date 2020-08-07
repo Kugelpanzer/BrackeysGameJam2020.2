@@ -214,8 +214,17 @@ public class PlayerController : MonoBehaviour
 	{
 		if ( MustRewind || shouldTarget) return;
 
-		// spawn 2 enemies
-		EnemyController.instance.Spawn ( 2 );
+		if ( !EnemyController.instance.HasFreeEnemySpace () )
+		{
+			// if enemy board is full attack instead of spawn
+			EnemyController.instance.Attack ();
+			AfterEnemyAttack ();
+		}
+		else
+		{
+			// spawn 2 enemies
+			EnemyController.instance.Spawn ( 2 );
+		}
 
 		// check if fighters are expired
 		OnEndOfTurn ();
