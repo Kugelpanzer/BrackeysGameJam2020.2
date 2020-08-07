@@ -45,6 +45,20 @@ public class PlayerController : MonoBehaviour
 		targetList.Remove(enemy);
 	}
 
+	public bool CheckTarget(BaseEnemy enemy)
+    {
+        if (targetList.Contains(enemy))
+        {
+			RemoveEnemy(enemy);
+			return false;
+        }
+        else
+        {
+			AddTarget(enemy);
+			return true;
+        }
+    }
+
 	public void SpawnFighter()
     {
         int index = FreeFighterSpace();

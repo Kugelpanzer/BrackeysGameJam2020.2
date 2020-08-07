@@ -20,8 +20,11 @@ public class BaseEnemy : BaseDamagable
 	{
 		damage++;
 	}
-
-	private List<BaseFighter> GetRandomFighters ( int amount = 1 )
+    public override void Death()
+    {
+        base.Death();
+    }
+    private List<BaseFighter> GetRandomFighters ( int amount = 1 )
 	{
 		return PlayerController.instance.RandomFighters ( amount );
 	}

@@ -95,7 +95,7 @@ public class CardScript : MonoBehaviour
             {
                 foreach(BaseFighter fighter in PlayerController.instance.fighters)
                 {
-                    fighter.shield = negateAmount;
+                    if(fighter!=null) fighter.shield = negateAmount;
                 }
             }
             if (defendPlayer)
