@@ -17,7 +17,7 @@ public class BaseDamagable : MonoBehaviour
         else
         {
             health -= amount;
-            if (health < 0)
+            if (health <= 0)
             {
                 Death();
             }
@@ -25,6 +25,7 @@ public class BaseDamagable : MonoBehaviour
     }
     public virtual void Death()
     {
+        
         DestroyObject();
 		// mora i kontroler da ga ukloni iz liste, al to se poziva spolja
     }

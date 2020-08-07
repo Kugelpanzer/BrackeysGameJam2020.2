@@ -37,6 +37,7 @@ public class PlayerController : MonoBehaviour
 			shouldTarget = false;
 			deck[NextCardInDeck].SetTargets(targetList);
 			ExecutePlay();
+			targetList = new List<BaseEnemy>();
         }
 		
     }
