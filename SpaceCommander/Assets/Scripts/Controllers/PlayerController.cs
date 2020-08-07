@@ -290,6 +290,7 @@ public class PlayerController : MonoBehaviour
 			if ( fighters [counter].Longevity < 0 )
 			{
 				// TODO animacija da je zardjao i ukloniti
+				fighters [counter].Death ();
 				fighters [counter] = null;
 			}
 		}
