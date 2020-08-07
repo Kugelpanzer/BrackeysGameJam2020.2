@@ -303,7 +303,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1
   shield: 0
-  damage: 1
+  damage: 2
   location: 0
   Longevity: 2
   infoText: {fileID: 8620488050086938850}
