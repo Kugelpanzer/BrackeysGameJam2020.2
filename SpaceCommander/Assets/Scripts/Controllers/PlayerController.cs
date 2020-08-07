@@ -176,8 +176,13 @@ public class PlayerController : MonoBehaviour
 	{
 		if ( MustRewind ||shouldTarget) return;
 
-        if (deck[NextCardInDeck].targetType == DamageType.Target)
-        {
+		if (deck[NextCardInDeck].targetType == DamageType.Target)
+		{
+			if (EnemyController.instance.AllEnemies().Count == 0) 
+			{
+				Wind();
+				return; 
+			}
 			numberOfTargets=deck[NextCardInDeck].numberOfTargets;
 			shouldTarget = true;
         }
