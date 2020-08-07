@@ -227,22 +227,28 @@ public class PlayerController : MonoBehaviour
 	private void AfterEnemyAttack()
 	{
 		// check if fighters are destroyed
-		foreach ( BaseFighter fighter in fighters )
+		for ( int counter = fighters.Length - 1; counter >= 0; counter --  )
 		{
-			if ( fighter.health < 0 )
+			if ( fighters [counter] == null ) continue;
+			if ( fighters [counter].health < 0 )
 			{
 				// TODO animacija da je pukao i ukloniti
-
+				fighters [counter] = null;
 			}
 		}
 	}
 
 	private void OnEndOfTurn()
 	{
-		foreach (BaseFighter fighter in fighters)
+		for ( int counter = fighters.Length - 1; counter >= 0; counter-- )
 		{
-			fighter.OnEndOfTurn ();
-			if ( fighter.Longevity < 0 ) ; // TODO animacija da je zardjao i ukloniti
+			if ( fighters [counter] == null ) continue;
+			fighters [counter].OnEndOfTurn ();
+			if ( fighters [counter].Longevity < 0 )
+			{
+				// TODO animacija da je zardjao i ukloniti
+				fighters [counter] = null;
+			}
 		}
 	}
 
