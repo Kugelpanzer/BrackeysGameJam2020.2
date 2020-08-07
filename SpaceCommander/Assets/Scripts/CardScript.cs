@@ -58,7 +58,7 @@ public class CardScript : MonoBehaviour
 	{
 		Vector3 position = transform.position;
 		Vector3 delta = MoveTowardsHere - position;
-		transform.position = position + delta * Time.deltaTime;
+		transform.position = position + delta * Time.deltaTime * 2f;
 	}
 
 	public void SetTargets(List<BaseEnemy> targetList)
