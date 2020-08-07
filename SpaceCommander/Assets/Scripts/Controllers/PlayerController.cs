@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
 	public void AddTarget(BaseEnemy enemy)
     {
 		targetList.Add(enemy);
-        if (targetList.Count == numberOfTargets)
+        if (targetList.Count == numberOfTargets  || targetList.Count==EnemyController.instance.AllEnemies().Count)
         {
 			shouldTarget = false;
 			deck[NextCardInDeck].SetTargets(targetList);
