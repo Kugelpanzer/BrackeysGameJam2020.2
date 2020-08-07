@@ -300,7 +300,7 @@ public class PlayerController : MonoBehaviour
 
 	private void MoveCardToDiscardPile(CardScript card)
 	{
-		card.isPlayed = true;
+		card.isDiscarded = true;
 		Vector3 DiscardLocation = DiscardPosition.transform.position;
 		card.MoveTowardsHere = DiscardLocation;
 		DiscardLocation.z = DiscardLocation.z - DiscardStackDelta;

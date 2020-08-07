@@ -5,8 +5,13 @@ using UnityEngine;
 
 public class CardScript : MonoBehaviour
 {
-    public Card cardData;
+	private static Color _playedColor = new Color ( 0.3f, 0.3f, 0.3f );
+	private static Color _availableColor = Color.white;
+	private static Color _discardedColor = Color.red;
+
+	public Card cardData;
 	public bool isPlayed = false;
+	public bool isDiscarded = false;
 	public Vector3 MoveTowardsHere;
 
     private List<BaseEnemy> targetList = new List<BaseEnemy>();
@@ -59,6 +64,11 @@ public class CardScript : MonoBehaviour
 		Vector3 position = transform.position;
 		Vector3 delta = MoveTowardsHere - position;
 		transform.position = position + delta * Time.deltaTime * 2f;
+
+		SpriteRenderer renderer = GetComponent<SpriteRenderer> ();
+		if ( isDiscarded ) renderer.color = Color.Lerp ( renderer.color, _discardedColor, Time.deltaTime );
+		else if (isPlayed) renderer.color = Color.Lerp ( renderer.color, _playedColor, Time.deltaTime );
+		else renderer.color = Color.Lerp ( renderer.color, _availableColor, Time.deltaTime );
 	}
 
 	public void SetTargets(List<BaseEnemy> targetList)
