@@ -15,7 +15,7 @@ MonoBehaviour:
   cardName: Default
   description: Deal 1 dmg to 6 random targets.
   value: 3
-  image: {fileID: 21300000, guid: 603caad6770981243a3bae5fff636907, type: 3}
+  image: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   doDamage: 1
   targetType: 0
   numberOfTargets: 6
