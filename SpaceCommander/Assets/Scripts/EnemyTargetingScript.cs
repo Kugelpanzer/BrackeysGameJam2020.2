@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyTargetingScript : MonoBehaviour
 {
 
-    GameObject targetPrefab;
+    public GameObject targetPrefab;
 
 
     private void OnMouseOver()
@@ -14,7 +14,9 @@ public class EnemyTargetingScript : MonoBehaviour
             Debug.Log("Klik");
         if (Input.GetMouseButtonDown(0) && PlayerController.instance.shouldTarget)
         {
-            PlayerController.instance.AddTarget(GetComponent<BaseEnemy>());
+
+            targetPrefab.SetActive(PlayerController.instance.CheckTarget(GetComponent<BaseEnemy>()));
+
 
         }
     }

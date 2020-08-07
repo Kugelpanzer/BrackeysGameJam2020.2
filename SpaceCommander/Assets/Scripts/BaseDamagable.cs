@@ -25,12 +25,13 @@ public class BaseDamagable : MonoBehaviour
     }
     public virtual void Death()
     {
+        DestroyObject();
 		// mora i kontroler da ga ukloni iz liste, al to se poziva spolja
     }
 
     public void DestroyObject()
     {
-        Destroy(gameObject);
+       Destroy(gameObject);
     }
     // Start is called before the first frame update
     void Start()
