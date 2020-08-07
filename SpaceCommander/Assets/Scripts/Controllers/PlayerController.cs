@@ -128,8 +128,8 @@ public class PlayerController : MonoBehaviour
 
 			cardPool.RemoveAt(rand);
         }
-
-    }
+		MoveCardLocations();
+	}
 
 	private void MoveToNextCard ()
 	{
