@@ -11,9 +11,10 @@ public class CardScript : MonoBehaviour
 
     private List<BaseEnemy> targetList = new List<BaseEnemy>();
 
-
-    protected string cardName = "Default";
-    protected string description = "";
+    [HideInInspector]
+    public string cardName = "Default";
+    [HideInInspector]
+    public string description = "";
     [HideInInspector]
     public int value = 1;
 
