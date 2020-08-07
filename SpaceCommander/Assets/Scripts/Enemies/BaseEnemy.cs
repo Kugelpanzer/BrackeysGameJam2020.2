@@ -10,7 +10,10 @@ public class BaseEnemy : BaseDamagable
     public void Attack()
     {
 		BaseFighter target = GetRandomFighters () [0];
-		if ( target != null ) target.TakeDamage ( damage );
+		if ( target != null )
+			target.TakeDamage ( damage );
+		else
+			PlayerController.instance.player.TakeDamage ( damage );
 	}
 
 	public void Upgrade ()

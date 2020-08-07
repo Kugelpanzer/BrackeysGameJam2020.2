@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
 
     public GameObject fighterPrefab;
 
-    public PlayerScript player;
+    public PlayerScript player = new PlayerScript();
 	[HideInInspector]
     public BaseFighter[] fighters;
 
@@ -74,6 +74,7 @@ public class PlayerController : MonoBehaviour
     }
     private void Start()
     {
+		player.health = 25;
 		MakeDeck();
     }
 
@@ -235,6 +236,9 @@ public class PlayerController : MonoBehaviour
 
 	private void AfterEnemyAttack()
 	{
+		// check if the player is out of health
+		if ( player.health < 0 ) EndGame ();
+
 		// check if fighters are destroyed
 		for ( int counter = fighters.Length - 1; counter >= 0; counter --  )
 		{
