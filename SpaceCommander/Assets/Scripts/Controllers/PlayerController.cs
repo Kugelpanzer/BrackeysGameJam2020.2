@@ -33,7 +33,9 @@ public class PlayerController : MonoBehaviour
 		targetList.Add(enemy);
         if (targetList.Count == numberOfTargets)
         {
-
+			shouldTarget = false;
+			deck[NextCardInDeck].SetTargets(targetList);
+			ExecutePlay();
         }
 		
     }
