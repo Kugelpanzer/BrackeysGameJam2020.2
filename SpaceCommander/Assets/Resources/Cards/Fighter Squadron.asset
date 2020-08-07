@@ -15,7 +15,7 @@ MonoBehaviour:
   cardName: Default
   description: Place 3 fighters on the field (1dmg, 1 HP).
   value: 3
-  image: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  image: {fileID: 21300000, guid: 739f8f272cf540848a0bbd51211b3818, type: 3}
   doDamage: 0
   targetType: 0
   numberOfTargets: 0
