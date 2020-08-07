@@ -132,6 +132,8 @@ public class PlayerController : MonoBehaviour
 
 	public void Play()
 	{
+		if ( MustRewind ) return;
+
 		// play cards
 		deck[NextCardInDeck].ExecuteCard ();
 
@@ -140,9 +142,13 @@ public class PlayerController : MonoBehaviour
 
 		// enemies attack
 		EnemyController.instance.Attack ();
+		AfterEnemyAttack ();
 
 		// spawn 1 enemy
 		EnemyController.instance.Spawn ( 1 );
+
+		// check if fighters are expired
+		OnEndOfTurn ();
 
 		// move to next card
 		deck [NextCardInDeck].isPlayed = true;
@@ -151,8 +157,13 @@ public class PlayerController : MonoBehaviour
 
 	public void Wind ()
 	{
+		if ( MustRewind ) return;
+
 		// spawn 2 enemies
 		EnemyController.instance.Spawn ( 2 );
+
+		// check if fighters are expired
+		OnEndOfTurn ();
 
 		// wind
 		MoveToNextCard ();
@@ -166,13 +177,42 @@ public class PlayerController : MonoBehaviour
 		// upgrade enemies
 		EnemyController.instance.Upgrade ();
 
+		// check if fighters are expired
+		OnEndOfTurn ();
+
 		// rewind
+		MustRewind = false;
+
 		MoveCardToDiscardPile ( deck [NextCardInDeck] );
 		deck.RemoveAt ( NextCardInDeck );
 		numberOfCards--;
 		if ( position > NextCardInDeck ) position--;
 		FadeBackAllCards ();
 		NextCardInDeck = position;
+
+		if ( numberOfCards <= 1 ) EndGame ();
+	}
+
+	private void AfterEnemyAttack()
+	{
+		// check if fighters are destroyed
+		foreach ( BaseFighter fighter in fighters )
+		{
+			if ( fighter.health < 0 )
+			{
+				// TODO animacija da je pukao i ukloniti
+
+			}
+		}
+	}
+
+	private void OnEndOfTurn()
+	{
+		foreach (BaseFighter fighter in fighters)
+		{
+			fighter.OnEndOfTurn ();
+			if ( fighter.Longevity < 0 ) ; // TODO animacija da je zardjao i ukloniti
+		}
 	}
 
 	private void MoveCardToDiscardPile(CardScript card)
@@ -187,6 +227,11 @@ public class PlayerController : MonoBehaviour
 	private void FadeBackAllCards ()
 	{
 		foreach ( CardScript card in deck ) card.isPlayed = false;
+	}
+
+	private void EndGame()
+	{
+		// TODO
 	}
 
 	// Update is called once per frame

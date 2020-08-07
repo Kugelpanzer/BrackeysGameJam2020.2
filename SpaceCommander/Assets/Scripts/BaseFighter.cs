@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class BaseFighter : BaseDamagable
 {
-
     public int damage;
     public int location;
+	public int Longevity = 2;
 
     public virtual void Attack()
     {
@@ -16,6 +16,12 @@ public class BaseFighter : BaseDamagable
             target.TakeDamage(damage);
         }
     }
+
+	public void OnEndOfTurn ()
+	{
+		Longevity--;
+	}
+
     // Start is called before the first frame update
     void Start()
     {
