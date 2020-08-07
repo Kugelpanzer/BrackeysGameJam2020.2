@@ -1,13 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using System.Globalization;
 
 public class BaseFighter : BaseDamagable
 {
     public int damage;
     public int location;
 	public int Longevity = 2;
-
+	public TextMeshPro infoText;
 	public virtual void Attack ()
 	{
 		BaseEnemy target = GetRandomEnemy ();
@@ -31,8 +33,8 @@ public class BaseFighter : BaseDamagable
     // Update is called once per frame
     void Update()
     {
-        
-    }
+       infoText.text = "A:" + damage + " H:" + health +" S:"+shield;
+	}
 
 	private List<BaseEnemy> GetRandomEnemies ( int amount = 1 )
 	{

@@ -10,8 +10,7 @@ public class EnemyTargetingScript : MonoBehaviour
 
     private void OnMouseOver()
     {
-        if (Input.GetMouseButtonDown(0))
-            Debug.Log("Klik");
+
         if (Input.GetMouseButtonDown(0) && PlayerController.instance.shouldTarget)
         {
 
