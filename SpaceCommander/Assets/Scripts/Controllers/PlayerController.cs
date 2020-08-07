@@ -24,7 +24,25 @@ public class PlayerController : MonoBehaviour
     public PlayerScript player;
     public BaseFighter[] fighters;
 
-    public void SpawnFighter()
+	public bool shouldTarget=false;
+	private int numberOfTargets = 0;
+	private List<BaseEnemy> targetList = new List<BaseEnemy>();
+
+	public void AddTarget(BaseEnemy enemy)
+    {
+		targetList.Add(enemy);
+        if (targetList.Count == numberOfTargets)
+        {
+
+        }
+		
+    }
+	public void RemoveEnemy(BaseEnemy enemy)
+	{
+		targetList.Remove(enemy);
+	}
+
+	public void SpawnFighter()
     {
         int index = FreeFighterSpace();
         if (index != -1)
@@ -132,32 +150,44 @@ public class PlayerController : MonoBehaviour
 
 	public void Play()
 	{
-		if ( MustRewind ) return;
+		if ( MustRewind ||shouldTarget) return;
 
-		// play cards
-		deck[NextCardInDeck].ExecuteCard ();
-
-		// player attacks
-		foreach ( BaseFighter fighter in AllFighters () ) fighter.Attack ();
-
-		// enemies attack
-		EnemyController.instance.Attack ();
-		AfterEnemyAttack ();
-
-		// spawn 1 enemy
-		EnemyController.instance.Spawn ( 1 );
-
-		// check if fighters are expired
-		OnEndOfTurn ();
-
-		// move to next card
-		deck [NextCardInDeck].isPlayed = true;
-		MoveToNextCard ();
+        if (deck[NextCardInDeck].targetType == DamageType.Target)
+        {
+			numberOfTargets=deck[NextCardInDeck].numberOfTargets;
+			shouldTarget = true;
+        }
+        else
+        {
+			ExecutePlay();
+        }
 	}
 
+	private void ExecutePlay()
+    {
+		// play cards
+		deck[NextCardInDeck].ExecuteCard();
+
+		// player attacks
+		foreach (BaseFighter fighter in AllFighters()) fighter.Attack();
+
+		// enemies attack
+		EnemyController.instance.Attack();
+		AfterEnemyAttack();
+
+		// spawn 1 enemy
+		EnemyController.instance.Spawn(1);
+
+		// check if fighters are expired
+		OnEndOfTurn();
+
+		// move to next card
+		deck[NextCardInDeck].isPlayed = true;
+		MoveToNextCard();
+	}
 	public void Wind ()
 	{
-		if ( MustRewind ) return;
+		if ( MustRewind || shouldTarget) return;
 
 		// spawn 2 enemies
 		EnemyController.instance.Spawn ( 2 );
@@ -171,6 +201,7 @@ public class PlayerController : MonoBehaviour
 
 	public void Rewind(int position)
 	{
+		if (shouldTarget) return;
 		// spawn 1 enemy
 		EnemyController.instance.Spawn ( 1 );
 

@@ -21,7 +21,8 @@ public class CardScript : MonoBehaviour
     protected bool doDamage = false;
     [HideInInspector]
     public DamageType targetType;  //public so controller knows if it should wait for the targets to be selected 
-    protected int numberOfTargets = 0;
+    [HideInInspector]
+    public int numberOfTargets = 0;
     protected int damageAmount = 0;
 
     protected bool doDefense = false;
