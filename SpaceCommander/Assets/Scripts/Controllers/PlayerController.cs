@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
 
     public List<GameObject> fighterPositions = new List<GameObject>();// positions where fighters can spawn on screen
 	public List<GameObject> CardPositions = new List<GameObject> ();
-	public GameObject DiscardPosition = new GameObject ();
+	public GameObject DiscardPosition;
 	public float DiscardStackDelta = 0.01f;
 
     public GameObject fighterPrefab;
@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
         fighters = new BaseFighter[fighterPositions.Count];
     }
 

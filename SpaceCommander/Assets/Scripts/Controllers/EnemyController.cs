@@ -24,7 +24,7 @@ public class EnemyController : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
 
         enemyList = new BaseEnemy[lanePositions.Count];
     }
