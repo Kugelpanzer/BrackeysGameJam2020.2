@@ -52,7 +52,6 @@ public class CardScript : MonoBehaviour
         doSpawn = cardData.doSpawn;
         spawnAmount = cardData.spawnAmount;
         fireWhenSpawned = cardData.fireWhenSpawned;
-
     }
 
 	private void Update ()
@@ -68,47 +67,27 @@ public class CardScript : MonoBehaviour
     }
     public void ExecuteCard()
     {
-        if (doDamage)
-        {
-            switch (targetType)
-            {
-                case DamageType.Random:
-                    GetRandomEnemies(numberOfTargets);
-                    foreach(BaseEnemy enemy in targetList)
-                    {
-                        enemy.TakeDamage(damageAmount);
-                    }
-                    break;
-                case DamageType.Target:
-                    if (targetList != null)
-                    {
-                        foreach (BaseEnemy enemy in targetList)
-                        {
-                            enemy.TakeDamage(damageAmount);
-                        }
-                    }
-                    break;
-                case DamageType.All:
-                    for (int i = 0; i < EnemyController.instance.enemyList.Length; i++)
-                    {
-                        if (EnemyController.instance.enemyList[i] != null)
-                        {
-                            EnemyController.instance.enemyList[i].TakeDamage(damageAmount);
-                        }
-                    }
-                    PlayerController.instance.player.TakeDamage(damageAmount);
-                    break;
-                case DamageType.AllEnemies:
-                    for (int i = 0; i < EnemyController.instance.enemyList.Length; i++)
-                    {
-                        if (EnemyController.instance.enemyList[i] != null)
-                        {
-                            EnemyController.instance.enemyList[i].TakeDamage(damageAmount);
-                        }
-                    }
-                    break;
-            }
-        }
+		if ( doDamage )
+		{
+			switch ( targetType )
+			{
+				case DamageType.Random:
+					foreach ( BaseEnemy enemy in GetRandomEnemies ( numberOfTargets ) ) enemy.TakeDamage ( damageAmount );
+					break;
+				case DamageType.Target:
+					if ( targetList == null ) break;
+					foreach ( BaseEnemy enemy in targetList ) enemy.TakeDamage ( damageAmount );
+					break;
+				case DamageType.All:
+					foreach ( BaseFighter fighter in PlayerController.instance.AllFighters () ) fighter.TakeDamage ( damageAmount );
+					foreach ( BaseEnemy enemy in EnemyController.instance.AllEnemies () ) enemy.TakeDamage ( damageAmount );
+					PlayerController.instance.player.TakeDamage ( damageAmount );
+					break;
+				case DamageType.AllEnemies:
+					foreach ( BaseEnemy enemy in EnemyController.instance.AllEnemies () ) enemy.TakeDamage ( damageAmount );
+					break;
+			}
+		}
 
         if (doDefense)
         {
@@ -127,47 +106,19 @@ public class CardScript : MonoBehaviour
 
         if (doSpawn)
         {
-            /*
-    protected bool doSpawn = false;
-    protected int spawnAmount = 0;
-    protected bool fireWhenSpawned = false;
-            */
             for(int i=0; i < spawnAmount; i++)
             {
                 PlayerController.instance.SpawnFighter();
-
             }
 
         }
     }
 
 
-    private void GetRandomEnemies(int amount)
-    {
-        /*List<BaseEnemy> allEnemies = new List<BaseEnemy>();
-        for (int i = 0; i < EnemyController.instance.enemyList.Length; i++)
-        {
-            if (EnemyController.instance.enemyList[i] != null)
-            {
-                allEnemies.Add(EnemyController.instance.enemyList[i]);
-            }
-        }
-        for (int i = 0; i < amount; i++)
-        {
-            if (allEnemies.Count != 0)
-            {
-                int rand = Random.Range(0, allEnemies.Count);
-                targetList.Add(allEnemies[rand]);
-                allEnemies.RemoveAt(rand);
-            }
+	private List<BaseEnemy> GetRandomEnemies ( int amount )
+	{
+		return EnemyController.instance.RandomEnemies ( amount );
+	}
 
-        }*/
-        EnemyController.instance.RandomEnemies(amount);
-        //return allEnemies;
-    }
-
-    public void CardInit()
-    {
-
-    }
+    public void CardInit() {}
 }

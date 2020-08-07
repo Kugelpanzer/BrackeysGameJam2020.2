@@ -8,14 +8,14 @@ public class BaseFighter : BaseDamagable
     public int location;
 	public int Longevity = 2;
 
-    public virtual void Attack()
-    {
-        BaseEnemy target = GetRandomEnemies()[0];
-        if (target != null)
-        {
-            target.TakeDamage(damage);
-        }
-    }
+	public virtual void Attack ()
+	{
+		BaseEnemy target = GetRandomEnemy ();
+		if ( target != null )
+		{
+			target.TakeDamage ( damage );
+		}
+	}
 
 	public void OnEndOfTurn ()
 	{
@@ -37,5 +37,12 @@ public class BaseFighter : BaseDamagable
 	private List<BaseEnemy> GetRandomEnemies ( int amount = 1 )
 	{
 		return EnemyController.instance.RandomEnemies ( amount );
+	}
+
+	private BaseEnemy GetRandomEnemy ()
+	{
+		List<BaseEnemy> fighters = GetRandomEnemies ( 1 );
+		if ( fighters.Count == 0 ) return null;
+		return fighters [0];
 	}
 }

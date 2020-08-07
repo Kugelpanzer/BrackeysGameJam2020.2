@@ -9,7 +9,7 @@ public class BaseEnemy : BaseDamagable
 
     public void Attack()
     {
-		BaseFighter target = GetRandomFighters () [0];
+		BaseFighter target = GetRandomFighter ();
 		if ( target != null )
 			target.TakeDamage ( damage );
 		else
@@ -24,6 +24,13 @@ public class BaseEnemy : BaseDamagable
 	private List<BaseFighter> GetRandomFighters ( int amount = 1 )
 	{
 		return PlayerController.instance.RandomFighters ( amount );
+	}
+
+	private BaseFighter GetRandomFighter ()
+	{
+		List<BaseFighter> fighters = GetRandomFighters ( 1 );
+		if ( fighters.Count == 0 ) return null;
+		return fighters [0];
 	}
 
 	// Start is called before the first frame update

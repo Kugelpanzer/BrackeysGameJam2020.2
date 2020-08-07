@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class PlayerScript : BaseDamagable
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	public static PlayerScript instance;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+	private void Awake ()
+	{
+		if ( instance == null ) instance = this;
+		else Destroy ( gameObject );
+	}
 }

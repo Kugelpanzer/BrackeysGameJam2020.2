@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
 
     public GameObject fighterPrefab;
 
-    public PlayerScript player = new PlayerScript();
+    public PlayerScript player;
 	[HideInInspector]
     public BaseFighter[] fighters;
 
@@ -74,6 +74,7 @@ public class PlayerController : MonoBehaviour
     }
     private void Start()
     {
+		player = PlayerScript.instance;
 		player.health = 25;
 		MakeDeck();
     }
