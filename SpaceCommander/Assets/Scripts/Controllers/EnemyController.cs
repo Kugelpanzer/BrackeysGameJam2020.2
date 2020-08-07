@@ -82,10 +82,17 @@ public class EnemyController : MonoBehaviour
 	{
 		foreach ( BaseEnemy enemy in AllEnemies () ) enemy.Upgrade ();
 	}
-
-	// Update is called once per frame
-	void Update()
-    {
-        
-    }
+	public void AfterPlayerAttack ()
+	{
+		// check if enemies are destroyed
+		for ( int counter = enemyList.Length - 1; counter >= 0; counter-- )
+		{
+			if ( enemyList [counter] == null ) continue;
+			if ( enemyList [counter].health < 0 )
+			{
+				// TODO animacija da je pukao i ukloniti
+				enemyList [counter] = null;
+			}
+		}
+	}
 }
