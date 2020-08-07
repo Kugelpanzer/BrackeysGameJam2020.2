@@ -25,4 +25,8 @@ public class CardSelectScript : MonoBehaviour
             //PlayerController.instance.AddTarget(GetComponent<BaseEnemy>());
         }
     }
+    private void OnMouseExit()
+    {
+        descritpionText.text = "";
+    }
 }
