@@ -199,6 +199,7 @@ public class PlayerController : MonoBehaviour
 
 		// player attacks
 		foreach (BaseFighter fighter in AllFighters()) fighter.Attack();
+		EnemyController.instance.AfterPlayerAttack ();
 
 		// enemies attack
 		EnemyController.instance.Attack();
@@ -290,7 +291,7 @@ public class PlayerController : MonoBehaviour
 		card.isPlayed = true;
 		Vector3 DiscardLocation = DiscardPosition.transform.position;
 		card.MoveTowardsHere = DiscardLocation;
-		DiscardLocation.y = DiscardLocation.y + DiscardStackDelta;
+		DiscardLocation.z = DiscardLocation.z - DiscardStackDelta;
 		DiscardPosition.transform.position = DiscardLocation;
 	}
 
