@@ -90,7 +90,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
 		player = PlayerScript.instance;
-		player.health = 25;
+		player.health = 30;
 		MakeDeck();
     }
 
@@ -197,9 +197,10 @@ public class PlayerController : MonoBehaviour
     {
 		// play cards
 		deck[NextCardInDeck].ExecuteCard();
+		AfterEnemyAttack ();
 
 		// player attacks
-		foreach (BaseFighter fighter in AllFighters()) fighter.Attack();
+		foreach ( BaseFighter fighter in AllFighters()) fighter.Attack();
 		EnemyController.instance.AfterPlayerAttack ();
 
 		// enemies attack
@@ -248,9 +249,6 @@ public class PlayerController : MonoBehaviour
 		// upgrade enemies
 		EnemyController.instance.Upgrade ();
 
-		// check if fighters are expired
-		OnEndOfTurn ();
-
 		// rewind
 		MustRewind = false;
 
@@ -262,7 +260,8 @@ public class PlayerController : MonoBehaviour
 		NextCardInDeck = position;
 		MoveCardLocations ();
 
-		if ( numberOfCards <= 1 ) EndGame ();
+		// check if fighters are expired
+		OnEndOfTurn ();
 	}
 
 	private void AfterEnemyAttack()
@@ -294,6 +293,9 @@ public class PlayerController : MonoBehaviour
 				fighters [counter] = null;
 			}
 		}
+
+		if ( numberOfCards == 0 ) EndGame ();
+		if ( numberOfCards == 1 && deck [0].isPlayed ) EndGame ();
 	}
 
 	private void MoveCardToDiscardPile(CardScript card)
