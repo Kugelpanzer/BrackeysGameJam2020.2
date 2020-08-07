@@ -144,7 +144,7 @@ public class CardScript : MonoBehaviour
 
     private void GetRandomEnemies(int amount)
     {
-        List<BaseEnemy> allEnemies = new List<BaseEnemy>();
+        /*List<BaseEnemy> allEnemies = new List<BaseEnemy>();
         for (int i = 0; i < EnemyController.instance.enemyList.Length; i++)
         {
             if (EnemyController.instance.enemyList[i] != null)
@@ -161,8 +161,8 @@ public class CardScript : MonoBehaviour
                 allEnemies.RemoveAt(rand);
             }
 
-        }
-
+        }*/
+        EnemyController.instance.RandomEnemies(amount);
         //return allEnemies;
     }
 
