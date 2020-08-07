@@ -8,7 +8,10 @@ public class CardSelectScript : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) )
         {
-            PlayerController.instance.AddTarget(GetComponent<BaseEnemy>());
+            CardScript cs = GetComponent<CardScript>();
+            int index =PlayerController.instance.deck.IndexOf(cs);
+            PlayerController.instance.Rewind(index);
+            //PlayerController.instance.AddTarget(GetComponent<BaseEnemy>());
         }
     }
 }

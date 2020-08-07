@@ -13,6 +13,7 @@ public class EnemyTargetingScript : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && PlayerController.instance.shouldTarget)
         {
             PlayerController.instance.AddTarget(GetComponent<BaseEnemy>());
+
         }
     }
 

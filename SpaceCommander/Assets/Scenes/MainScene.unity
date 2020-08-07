@@ -1236,7 +1236,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberOfCards: 10
   deck: []
-  cardPrefab: {fileID: 0}
+  cardPrefab: {fileID: 3236000663818510145, guid: 8b10b0a7d4fc39147baebd1dbbae442c,
+    type: 3}
   NextCardInDeck: 0
   MustRewind: 0
   fighterPositions:

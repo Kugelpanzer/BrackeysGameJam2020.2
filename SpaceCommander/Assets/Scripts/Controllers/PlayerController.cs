@@ -72,6 +72,10 @@ public class PlayerController : MonoBehaviour
         //DontDestroyOnLoad(gameObject);
         fighters = new BaseFighter[fighterPositions.Count];
     }
+    private void Start()
+    {
+		MakeDeck();
+    }
 
 
     public List<BaseFighter> AllFighters()
