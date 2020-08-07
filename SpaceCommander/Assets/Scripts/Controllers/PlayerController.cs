@@ -92,7 +92,7 @@ public class PlayerController : MonoBehaviour
 	{
 		return fighters
 			.Select ( ( fighter, index ) => new { fighter, index } )
-			.Where ( i => i == null )
+			.Where ( i => i.fighter == null )
 			.Select ( i => i.index )
 			.ToList ();
 	}

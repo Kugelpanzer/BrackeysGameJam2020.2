@@ -55,7 +55,7 @@ public class EnemyController : MonoBehaviour
 	{
 		return enemyList
 			.Select ( ( enemy, index ) => new { enemy, index } )
-			.Where ( i => i == null )
+			.Where ( i => i.enemy == null )
 			.Select ( i => i.index )
 			.ToList ();
 	}
