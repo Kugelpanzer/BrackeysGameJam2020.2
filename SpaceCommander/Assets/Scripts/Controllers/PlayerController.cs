@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
     public GameObject fighterPrefab;
 
     public PlayerScript player;
+	[HideInInspector]
     public BaseFighter[] fighters;
 
 	public bool shouldTarget=false;

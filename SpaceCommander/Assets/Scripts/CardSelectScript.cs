@@ -2,18 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyTargetingScript : MonoBehaviour
+public class CardSelectScript : MonoBehaviour
 {
-
-    GameObject targetPrefab;
-
-
     private void OnMouseOver()
     {
-        if (Input.GetMouseButtonDown(0) && PlayerController.instance.shouldTarget)
+        if (Input.GetMouseButtonDown(0) )
         {
             PlayerController.instance.AddTarget(GetComponent<BaseEnemy>());
         }
     }
-
 }

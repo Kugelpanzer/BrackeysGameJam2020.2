@@ -8,6 +8,7 @@ public class EnemyController : MonoBehaviour
 {
 	private static System.Random rng = new System.Random ();
     public ActionEnum currentAction;
+	[HideInInspector]
     public BaseEnemy[] enemyList;
     public List<GameObject> lanePositions = new List<GameObject>(); // list of points where enemies will spawn
 
