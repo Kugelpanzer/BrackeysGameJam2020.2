@@ -15,7 +15,7 @@ MonoBehaviour:
   cardName: Default
   description: You and your fighters ignore the next 1 point of dmg.
   value: 1
-  image: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  image: {fileID: 21300000, guid: c03bc33723235914a9972a55250a1b79, type: 3}
   doDamage: 0
   targetType: 0
   numberOfTargets: 0

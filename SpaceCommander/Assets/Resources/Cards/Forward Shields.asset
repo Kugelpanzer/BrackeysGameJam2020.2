@@ -15,7 +15,7 @@ MonoBehaviour:
   cardName: Default
   description: Ignore the next 4 points of dmg.
   value: 4
-  image: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  image: {fileID: 21300000, guid: a4d567eb023405c45b4d4d8cdee8bdb9, type: 3}
   doDamage: 0
   targetType: 0
   numberOfTargets: 0
