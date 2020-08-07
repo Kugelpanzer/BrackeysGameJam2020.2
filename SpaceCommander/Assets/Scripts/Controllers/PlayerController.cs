@@ -223,6 +223,7 @@ public class PlayerController : MonoBehaviour
 		if ( position > NextCardInDeck ) position--;
 		FadeBackAllCards ();
 		NextCardInDeck = position;
+		MoveCardLocations ();
 
 		if ( numberOfCards <= 1 ) EndGame ();
 	}
