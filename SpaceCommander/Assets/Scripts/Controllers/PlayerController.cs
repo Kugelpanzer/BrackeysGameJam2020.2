@@ -123,6 +123,7 @@ public class PlayerController : MonoBehaviour
 			GameObject card = Instantiate(cardPrefab);
 			card.GetComponent<CardScript>().cardData = cardPool[rand];
 			deck.Add(card.GetComponent<CardScript>());
+			card.transform.position = CardPositions[deck.IndexOf(card.GetComponent<CardScript>())].transform.position;
 			card.GetComponent<CardScript>().CardInit();//Dodati posle da mu se sprite dodeli i jos nesto ako je potrebno
 
 			cardPool.RemoveAt(rand);
