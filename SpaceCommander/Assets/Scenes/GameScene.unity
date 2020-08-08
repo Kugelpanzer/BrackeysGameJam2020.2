@@ -837,8 +837,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -438, y: -701.88}
-  m_SizeDelta: {x: 250, y: 200}
+  m_AnchoredPosition: {x: -277.73, y: -701.94}
+  m_SizeDelta: {x: 591.11, y: 199.88}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &265003522
 MonoBehaviour:
@@ -925,7 +925,7 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -0.66372955, y: 1.7687789, z: 1.1424074, w: 1.7685726}
+  m_margin: {x: -0.66372955, y: 1.7687789, z: 1.1513997, w: 1.7685726}
   m_textInfo:
     textComponent: {fileID: 265003522}
     characterCount: 0
@@ -2735,6 +2735,7 @@ GameObject:
   - component: {fileID: 1657991995}
   - component: {fileID: 1657991998}
   - component: {fileID: 1657991996}
+  - component: {fileID: 1657991997}
   m_Layer: 0
   m_Name: Controller
   m_TagString: Untagged
@@ -2768,6 +2769,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34eef6d615bb9ca4591bb2e104b1b419, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  turnsToWin: 20
+  turnsToWinText: {fileID: 171558799}
   numberOfCards: 10
   deck: []
   cardPrefab: {fileID: 3236000663818510145, guid: 8b10b0a7d4fc39147baebd1dbbae442c,
@@ -2798,6 +2801,19 @@ MonoBehaviour:
   fighters: []
   healthText: {fileID: 1213879414}
   shouldTarget: 0
+--- !u!114 &1657991997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1657991994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 581ceb3262eec444a8959a1413b3495a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ResetKey: 114
 --- !u!114 &1657991998
 MonoBehaviour:
   m_ObjectHideFlags: 0

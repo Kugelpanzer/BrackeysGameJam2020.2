@@ -8,6 +8,7 @@ using TMPro;
 public class PlayerController : MonoBehaviour
 {
 	public int turnsToWin=20;
+	public TextMeshProUGUI turnsToWinText;
 	private static System.Random rng = new System.Random ();
     public int numberOfCards = 10;
     public List<CardScript> deck = new List<CardScript> ();
@@ -39,6 +40,7 @@ public class PlayerController : MonoBehaviour
         {
 			shouldTarget = false;
 			deck[NextCardInDeck].SetTargets(targetList);
+			foreach (BaseEnemy e in targetList) e.RemoveTarget();
 			ExecutePlay();
 			targetList = new List<BaseEnemy>();
         }
@@ -89,7 +91,9 @@ public class PlayerController : MonoBehaviour
         }
         //DontDestroyOnLoad(gameObject);
         fighters = new BaseFighter[fighterPositions.Count];
-    }
+		turnsToWinText.text = "Survive for: " + turnsToWin; 
+
+	}
     private void Start()
     {
 		player = PlayerScript.instance;
@@ -297,7 +301,9 @@ public class PlayerController : MonoBehaviour
 				fighters [counter] = null;
 			}
 		}
-
+		turnsToWin--;
+		turnsToWinText.text = "Survive for: " + turnsToWin;
+		if (turnsToWin == 0) WinGame();
 		if ( numberOfCards == 0 ) EndGame ();
 		if ( numberOfCards == 1 && deck [0].isPlayed ) EndGame ();
 	}
@@ -318,9 +324,12 @@ public class PlayerController : MonoBehaviour
 
 	private void EndGame()
 	{
-		// TODO
+		GetComponent<SceneController>().GoToScene(4);
 	}
-
+	private void WinGame()
+	{
+		GetComponent<SceneController>().GoToScene(2);
+	}
 	// Update is called once per frame
 	void Update ()
     {
