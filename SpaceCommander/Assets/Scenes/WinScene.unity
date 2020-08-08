@@ -284,7 +284,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -597, y: 296}
+  m_AnchoredPosition: {x: -597, y: 262}
   m_SizeDelta: {x: 860, y: 540}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &284326454
@@ -416,6 +416,7 @@ RectTransform:
   - {fileID: 712906566}
   - {fileID: 284326453}
   - {fileID: 147582663}
+  - {fileID: 1366196550}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -656,7 +657,7 @@ GameObject:
   - component: {fileID: 1366196552}
   - component: {fileID: 1366196551}
   m_Layer: 5
-  m_Name: StartTxt
+  m_Name: VictoryText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -671,15 +672,15 @@ RectTransform:
   m_GameObject: {fileID: 1366196549}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.47291663, y: 0.47291663, z: 0.47291663}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_Father: {fileID: 290615017}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 960.0001, y: 350}
-  m_SizeDelta: {x: 600, y: 130}
+  m_AnchoredPosition: {x: -31.718079, y: 20.088104}
+  m_SizeDelta: {x: -1320, y: -857.489}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1366196551
 MonoBehaviour:
@@ -699,7 +700,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Start Game
+  m_text: VICTORY IS YOURS!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7dea153622d11b846bbe3489d97229f8, type: 2}
   m_sharedMaterial: {fileID: -5693311255328885756, guid: 7dea153622d11b846bbe3489d97229f8,
@@ -728,8 +729,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 100
+  m_fontSizeBase: 100
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -766,13 +767,13 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: -413.1581, y: 0, z: -492.6964, w: -143.61108}
   m_textInfo:
     textComponent: {fileID: 1366196551}
-    characterCount: 10
+    characterCount: 17
     spriteCount: 0
-    spaceCount: 1
-    wordCount: 2
+    spaceCount: 2
+    wordCount: 3
     linkCount: 0
     lineCount: 1
     pageCount: 1
