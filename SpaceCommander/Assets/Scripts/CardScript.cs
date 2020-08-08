@@ -7,7 +7,9 @@ public class CardScript : MonoBehaviour
 {
 	private static Color _playedColor = new Color ( 0.3f, 0.3f, 0.3f );
 	private static Color _availableColor = Color.white;
-	private static Color _discardedColor = Color.red;
+	private static Color _discardedColor1 = Color.red;
+	private static Color _discardedColor2 = new Color ( 1f, 0f, 0f, 0f );
+	private int _discardStep = 1;
 
 	public Card cardData;
 	public bool isPlayed = false;
@@ -66,9 +68,30 @@ public class CardScript : MonoBehaviour
 		transform.position = position + delta * Time.deltaTime * 2f;
 
 		SpriteRenderer renderer = GetComponent<SpriteRenderer> ();
-		if ( isDiscarded ) renderer.color = Color.Lerp ( renderer.color, _discardedColor, Time.deltaTime );
-		else if (isPlayed) renderer.color = Color.Lerp ( renderer.color, _playedColor, Time.deltaTime );
+		if ( isDiscarded )
+		{
+			if ( _discardStep == 1 )
+			{
+				if ( SameColors ( renderer.color, _discardedColor1 ) ) _discardStep++;
+				else renderer.color = Color.Lerp ( renderer.color, _discardedColor1, Time.deltaTime );
+			}
+			else
+			{
+				if ( SameColors ( renderer.color, _discardedColor2 ) ) Destroy (gameObject);
+				else renderer.color = Color.Lerp ( renderer.color, _discardedColor2, Time.deltaTime );
+			}
+		}
+		else if ( isPlayed ) renderer.color = Color.Lerp ( renderer.color, _playedColor, Time.deltaTime );
 		else renderer.color = Color.Lerp ( renderer.color, _availableColor, Time.deltaTime );
+	}
+
+	private static bool SameColors (Color color1, Color color2)
+	{
+		if ( Mathf.Abs ( color1.r - color2.r ) > 0.03f ) return false;
+		if ( Mathf.Abs ( color1.g - color2.g ) > 0.03f ) return false;
+		if ( Mathf.Abs ( color1.b - color2.b ) > 0.03f ) return false;
+		if ( Mathf.Abs ( color1.a - color2.a ) > 0.01f ) return false;
+		return true;
 	}
 
 	public void SetTargets(List<BaseEnemy> targetList)
