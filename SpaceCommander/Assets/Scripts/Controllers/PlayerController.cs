@@ -16,8 +16,7 @@ public class PlayerController : MonoBehaviour
 
     public List<GameObject> fighterPositions = new List<GameObject>();// positions where fighters can spawn on screen
 	public List<GameObject> CardPositions = new List<GameObject> ();
-	public GameObject DiscardPosition;
-	public float DiscardStackDelta = 0.01f;
+	//public GameObject DiscardPosition;
 
     public GameObject fighterPrefab;
 
@@ -302,10 +301,7 @@ public class PlayerController : MonoBehaviour
 	private void MoveCardToDiscardPile(CardScript card)
 	{
 		card.isDiscarded = true;
-		Vector3 DiscardLocation = DiscardPosition.transform.position;
-		card.MoveTowardsHere = DiscardLocation;
-		DiscardLocation.z = DiscardLocation.z - DiscardStackDelta;
-		DiscardPosition.transform.position = DiscardLocation;
+		card.MoveTowardsHere = CardPositions [CardPositions.Count - 1].transform.position;
 	}
 
 	private void FadeBackAllCards ()
