@@ -34,18 +34,10 @@ public class SceneController : MonoBehaviour
 
     protected virtual void Update()
     {
-       /* if (Input.GetButton("Cancel") && SceneManager.GetActiveScene().buildIndex != 0)
-        {
-            GoToScene(0);
-        }
-        else if (Input.GetButton("Cancel") && SceneManager.GetActiveScene().buildIndex == 0)
-        {
-            QuitGame();
-        }
         if (Input.GetKeyDown(ResetKey))
         {
             ResetLevel();
-        }*/
+        }
 
 
     }

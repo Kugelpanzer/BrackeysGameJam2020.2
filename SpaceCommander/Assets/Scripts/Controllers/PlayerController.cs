@@ -3,6 +3,7 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class PlayerController : MonoBehaviour
 	[HideInInspector]
     public BaseFighter[] fighters;
 
+	public TextMeshProUGUI healthText;
 	public bool shouldTarget=false;
 	private int numberOfTargets = 0;
 	private List<BaseEnemy> targetList = new List<BaseEnemy>();
@@ -321,6 +323,6 @@ public class PlayerController : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        
+		healthText.text ="Health: "+ PlayerScript.instance.health+ " Shield: "+ PlayerScript.instance.shield;
     }
 }
