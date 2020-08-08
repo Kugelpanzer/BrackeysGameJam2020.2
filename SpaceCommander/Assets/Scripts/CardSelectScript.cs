@@ -20,10 +20,8 @@ public class CardSelectScript : MonoBehaviour
         descritpionText.text = cs.description;
         if (Input.GetMouseButtonDown(0) )
         {
-            
             int index =PlayerController.instance.deck.IndexOf(cs);
-            PlayerController.instance.Rewind(index);
-            //PlayerController.instance.AddTarget(GetComponent<BaseEnemy>());
+			if ( index != PlayerController.instance.NextCardInDeck ) PlayerController.instance.Rewind ( index );
         }
     }
     private void OnMouseExit()
