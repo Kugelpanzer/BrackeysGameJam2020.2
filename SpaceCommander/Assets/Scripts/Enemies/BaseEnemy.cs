@@ -29,6 +29,7 @@ public class BaseEnemy : BaseDamagable
 	}
     public override void Death()
     {
+		AudioController.instance.PlaySound("death");
         base.Death();
     }
     private List<BaseFighter> GetRandomFighters ( int amount = 1 )

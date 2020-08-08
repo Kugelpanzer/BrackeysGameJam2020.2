@@ -1534,6 +1534,18 @@ MonoBehaviour:
     volume: 0.335
     loop: 1
     source: {fileID: 0}
+  - type: 1
+    name: death
+    clip: {fileID: 8300000, guid: 46a2bc7c7fd62a245807f02f6c90419f, type: 3}
+    volume: 0.506
+    loop: 0
+    source: {fileID: 0}
+  - type: 1
+    name: aim
+    clip: {fileID: 8300000, guid: e80ff80988510154bbb070c74d7dfd0f, type: 3}
+    volume: 0.512
+    loop: 0
+    source: {fileID: 0}
 --- !u!4 &2135328280
 Transform:
   m_ObjectHideFlags: 0

@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour
 		targetList.Add(enemy);
         if (targetList.Count == numberOfTargets  || targetList.Count==EnemyController.instance.AllEnemies().Count)
         {
+			AudioController.instance.PlaySound("aim");
 			shouldTarget = false;
 			deck[NextCardInDeck].SetTargets(targetList);
 			foreach (BaseEnemy e in targetList) e.RemoveTarget();
