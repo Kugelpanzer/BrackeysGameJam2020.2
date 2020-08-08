@@ -78,11 +78,7 @@ public class AudioController : MonoBehaviour
     void Update()
     {
     }
-    private void OnLevelWasLoaded(int level)
-    {
 
-
-    }
 
      public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
         {
