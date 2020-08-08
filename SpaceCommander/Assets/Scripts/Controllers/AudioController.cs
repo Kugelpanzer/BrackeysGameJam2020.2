@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using System;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 using Random = UnityEngine.Random;
 public class AudioController : MonoBehaviour
@@ -53,8 +54,13 @@ public class AudioController : MonoBehaviour
     }
     void Start()
     {
-
         SetAllVolume();
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            PlaySound("Menu");
+            StopSound("MainScene");
+        }
     }
 
 
@@ -63,8 +69,28 @@ public class AudioController : MonoBehaviour
         Sound currSound=Array.Find(sounds, sound => sound.name == name);
         currSound.source.Play();
     }
+    public void StopSound(string name)
+    {
+        Sound currSound = Array.Find(sounds, sound => sound.name == name);
+        currSound.source.Stop();
+    }
 
     void Update()
     {
     }
+
+
+     public void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+        {
+            if (SceneManager.GetActiveScene().buildIndex == 0)
+            {
+                PlaySound("Menu");
+                StopSound("MainScene");
+            }
+            else if (SceneManager.GetActiveScene().buildIndex == 1)
+            {
+                StopSound("Menu");
+                PlaySound("MainScene");
+            }
+        }
 }

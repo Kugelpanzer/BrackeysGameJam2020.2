@@ -7,46 +7,41 @@ public class SceneController : MonoBehaviour
 {
 
     public KeyCode ResetKey = KeyCode.R;
-    public static void NextSceneStatic()
+    public  void NextSceneStatic()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
-    public static void NextScene()
+    public  void NextScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
-    public static void QuitGame()
+    public  void QuitGame()
     {
         Application.Quit();
     }
-    public static void ResetGame()
+    public  void ResetGame()
     {
         SceneManager.LoadScene(1);
     }
-    public static void GoToScene(int i)
+    public  void GoToScene(int i)
     {
         SceneManager.LoadScene(i);
     }
-    public static void ResetLevel()
+    public  void ResetLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     protected virtual void Update()
     {
-       /* if (Input.GetButton("Cancel") && SceneManager.GetActiveScene().buildIndex != 0)
-        {
-            GoToScene(0);
-        }
-        else if (Input.GetButton("Cancel") && SceneManager.GetActiveScene().buildIndex == 0)
-        {
-            QuitGame();
-        }
         if (Input.GetKeyDown(ResetKey))
         {
             ResetLevel();
-        }*/
+        }
 
-
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            GoToScene(0);
+        }
     }
 }

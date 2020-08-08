@@ -14,6 +14,8 @@ public class EnemyController : MonoBehaviour
 
 	public GameObject EnemyPrefab;
 
+	public int upgrade=0;
+
 	public static EnemyController instance;
     // Start is called before the first frame update
     void Awake()
@@ -85,6 +87,7 @@ public class EnemyController : MonoBehaviour
 
 	public void Upgrade ()
 	{
+		upgrade++;
 		foreach ( BaseEnemy enemy in AllEnemies () ) enemy.Upgrade ();
 	}
 	public void AfterPlayerAttack ()

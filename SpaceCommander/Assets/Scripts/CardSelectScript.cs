@@ -3,14 +3,15 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 public class CardSelectScript : MonoBehaviour
 {
-    Text descritpionText;
-
+    // descritpionText;
+    TextMeshProUGUI descritpionText;
     private void Start()
     {
-        GameObject go = GameObject.Find("CardEffectText");
-        descritpionText = go.GetComponent<Text>();
+        GameObject go = GameObject.Find("CardText");
+        descritpionText = go.GetComponent<TextMeshProUGUI>();
     }
 
     private void OnMouseOver()

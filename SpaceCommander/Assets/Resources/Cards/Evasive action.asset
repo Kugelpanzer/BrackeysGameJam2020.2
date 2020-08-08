@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Evasive action
   m_EditorClassIdentifier: 
   cardName: Default
-  description: Place 2 fighters on the field (1dmg, 1 HP). They immediately attack
+  description: Place 2 fighters on the field (1 DMG, 1 HP). They immediately attack
     random targets.
   value: 2
   image: {fileID: 21300000, guid: ae28672d3cfdb9544acd1b4912552f3b, type: 3}

@@ -7,6 +7,7 @@ public class BaseEnemy : BaseDamagable
 {
     public int damage;
 	public TextMeshPro infoText;
+	private bool upgradeFlag=true;
     public void Attack()
     {
 		BaseFighter target = GetRandomFighter ();
@@ -18,10 +19,17 @@ public class BaseEnemy : BaseDamagable
 
 	public void Upgrade ()
 	{
-		damage++;
+		if (upgradeFlag)
+		{
+			damage += EnemyController.instance.upgrade;
+			health += EnemyController.instance.upgrade;
+			upgradeFlag = false;
+		}
+
 	}
     public override void Death()
     {
+		AudioController.instance.PlaySound("death");
         base.Death();
     }
     private List<BaseFighter> GetRandomFighters ( int amount = 1 )
@@ -39,12 +47,17 @@ public class BaseEnemy : BaseDamagable
 	// Start is called before the first frame update
 	void Start ()
     {
-        
-    }
+		Upgrade();
+	}
 
     // Update is called once per frame
     void Update()
     {
 		infoText.text = "A:" + damage + " H:" + health;
+    }
+    public void RemoveTarget()
+    {
+		EnemyTargetingScript ets=GetComponent<EnemyTargetingScript>();
+		ets.targetPrefab.SetActive(false);
     }
 }

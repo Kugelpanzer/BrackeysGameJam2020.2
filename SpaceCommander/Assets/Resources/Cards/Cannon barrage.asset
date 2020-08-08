@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Cannon barrage
   m_EditorClassIdentifier: 
   cardName: Default
-  description: Deal 2 dmg to two different targets.
+  description: Deal 2 DMG to 2 different targets.
   value: 3
   image: {fileID: 21300000, guid: 4695e4c89b56fbc47a977dab7014122d, type: 3}
   doDamage: 1

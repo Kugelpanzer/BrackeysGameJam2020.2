@@ -6,7 +6,12 @@ public class PlayerScript : BaseDamagable
 {
 	public static PlayerScript instance;
 
-	private void Awake ()
+
+    public override void Death()
+    {
+       
+    }
+    private void Awake ()
 	{
 		if ( instance == null ) instance = this;
 		else Destroy ( gameObject );
