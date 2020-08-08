@@ -7,6 +7,7 @@ using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
+	public int turnsToWin=20;
 	private static System.Random rng = new System.Random ();
     public int numberOfCards = 10;
     public List<CardScript> deck = new List<CardScript> ();
@@ -244,7 +245,7 @@ public class PlayerController : MonoBehaviour
 
 	public void Rewind(int position)
 	{
-		if (shouldTarget) return;
+		if (shouldTarget || position==0) return;
 		// spawn 1 enemy
 		EnemyController.instance.Spawn ( 1 );
 
