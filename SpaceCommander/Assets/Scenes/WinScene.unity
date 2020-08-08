@@ -507,10 +507,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 837581532}
-  - component: {fileID: 837581531}
   - component: {fileID: 837581530}
   m_Layer: 0
-  m_Name: AllController
+  m_Name: SceneController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -529,25 +528,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ResetKey: 114
---- !u!114 &837581531
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 837581529}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f097ba1376634a34ea46a11bf81877d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sounds:
-  - type: 0
-    name: BgMusic
-    clip: {fileID: 8300000, guid: c2744ab6286518841b3892720d8a214a, type: 3}
-    volume: 1
-    loop: 1
-    source: {fileID: 0}
 --- !u!4 &837581532
 Transform:
   m_ObjectHideFlags: 0
