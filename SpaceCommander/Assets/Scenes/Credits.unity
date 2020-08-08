@@ -1537,7 +1537,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Zeljo Glumac
+  m_text: Zeljko Glumac
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7dea153622d11b846bbe3489d97229f8, type: 2}
   m_sharedMaterial: {fileID: -5693311255328885756, guid: 7dea153622d11b846bbe3489d97229f8,
@@ -1607,7 +1607,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: -125.69599, w: 0}
   m_textInfo:
     textComponent: {fileID: 1003551590}
-    characterCount: 12
+    characterCount: 13
     spriteCount: 0
     spaceCount: 1
     wordCount: 2
