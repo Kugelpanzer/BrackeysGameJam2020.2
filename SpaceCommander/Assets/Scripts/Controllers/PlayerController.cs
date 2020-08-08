@@ -249,7 +249,7 @@ public class PlayerController : MonoBehaviour
 
 	public void Rewind(int position)
 	{
-		if (shouldTarget || position==0) return;
+		if ( shouldTarget || position == NextCardInDeck ) return;
 		// spawn 1 enemy
 		EnemyController.instance.Spawn ( 1 );
 

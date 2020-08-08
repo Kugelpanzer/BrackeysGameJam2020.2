@@ -21,7 +21,7 @@ public class CardSelectScript : MonoBehaviour
         if (Input.GetMouseButtonDown(0) )
         {
             int index =PlayerController.instance.deck.IndexOf(cs);
-			if ( index != PlayerController.instance.NextCardInDeck ) PlayerController.instance.Rewind ( index );
+			PlayerController.instance.Rewind ( index );
         }
     }
     private void OnMouseExit()
