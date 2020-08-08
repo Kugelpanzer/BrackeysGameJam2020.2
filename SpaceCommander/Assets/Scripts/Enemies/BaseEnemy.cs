@@ -18,7 +18,10 @@ public class BaseEnemy : BaseDamagable
 
 	public void Upgrade ()
 	{
-		damage++;
+
+			damage += EnemyController.instance.upgrade;
+
+
 	}
     public override void Death()
     {
@@ -39,8 +42,8 @@ public class BaseEnemy : BaseDamagable
 	// Start is called before the first frame update
 	void Start ()
     {
-        
-    }
+		Upgrade();
+	}
 
     // Update is called once per frame
     void Update()

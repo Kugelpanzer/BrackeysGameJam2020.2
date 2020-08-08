@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ZexBackup.unity
     guid: efa9cfe2a1a40d14d9371a7a900bc0cd
+  - enabled: 1
+    path: Assets/Scenes/WinScene.unity
+    guid: 7987f4138c255b7499a9ccc471baae0f
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: 468c055c2e927034e8f0837107d4b5b9
   m_configObjects: {}
