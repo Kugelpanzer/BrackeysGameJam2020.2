@@ -17,15 +17,26 @@ public class CardSelectScript : MonoBehaviour
     private void OnMouseOver()
     {
         CardScript cs = GetComponent<CardScript>();
-        descritpionText.text = cs.description;
-        if (Input.GetMouseButtonDown(0) )
-        {
-            int index =PlayerController.instance.deck.IndexOf(cs);
-			PlayerController.instance.Rewind ( index );
-        }
+		descritpionText.text = cs.description;
+
+		if ( cs.isDiscarded ) return;
+		if ( PlayerController.instance.IsNextCard ( cs ) )
+		{
+			if ( Input.GetMouseButtonDown ( 0 ) ) PlayerController.instance.Play ();
+		}
+		else
+		{
+			PlayerController.instance.GetNextCard ().isPreviewDiscard = true;
+			if ( Input.GetMouseButtonDown ( 0 ) )
+			{
+				int index = PlayerController.instance.deck.IndexOf ( cs );
+				PlayerController.instance.Rewind ( index );
+			}
+		}
     }
     private void OnMouseExit()
     {
         descritpionText.text = "";
-    }
+		PlayerController.instance.GetNextCard ().isPreviewDiscard = false;
+	}
 }

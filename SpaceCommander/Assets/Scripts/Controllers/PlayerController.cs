@@ -332,4 +332,14 @@ public class PlayerController : MonoBehaviour
     {
 		healthText.text ="Health: "+ PlayerScript.instance.health+ " Shield: "+ PlayerScript.instance.shield;
     }
+
+	public bool IsNextCard(CardScript card)
+	{
+		return deck.IndexOf ( card ) == NextCardInDeck;
+	}
+
+	public CardScript GetNextCard ()
+	{
+		return deck [NextCardInDeck];
+	}
 }

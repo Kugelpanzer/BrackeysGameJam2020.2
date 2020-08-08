@@ -5,15 +5,17 @@ using UnityEngine;
 
 public class CardScript : MonoBehaviour
 {
-	private static Color _playedColor = new Color ( 0.3f, 0.3f, 0.3f );
-	private static Color _availableColor = Color.white;
-	private static Color _discardedColor1 = Color.red;
-	private static Color _discardedColor2 = new Color ( 1f, 0f, 0f, 0f );
+	public Color PlayedColor = new Color ( 0.3f, 0.3f, 0.3f );
+	public Color AvailableColor = Color.white;
+	public Color PreviewDiscardColor = Color.red;
+	public Color DiscardedColor1 = Color.red;
+	public Color DiscardedColor2 = new Color ( 1f, 0f, 0f, 0f );
 	private int _discardStep = 1;
 
 	public Card cardData;
 	public bool isPlayed = false;
 	public bool isDiscarded = false;
+	public bool isPreviewDiscard = false;
 	public Vector3 MoveTowardsHere;
 
     private List<BaseEnemy> targetList = new List<BaseEnemy>();
@@ -72,17 +74,18 @@ public class CardScript : MonoBehaviour
 		{
 			if ( _discardStep == 1 )
 			{
-				if ( SameColors ( renderer.color, _discardedColor1 ) ) _discardStep++;
-				else renderer.color = Color.Lerp ( renderer.color, _discardedColor1, Time.deltaTime );
+				if ( SameColors ( renderer.color, DiscardedColor1 ) ) _discardStep++;
+				else renderer.color = Color.Lerp ( renderer.color, DiscardedColor1, Time.deltaTime * 0.6f );
 			}
 			else
 			{
-				if ( SameColors ( renderer.color, _discardedColor2 ) ) Destroy (gameObject);
-				else renderer.color = Color.Lerp ( renderer.color, _discardedColor2, Time.deltaTime );
+				if ( SameColors ( renderer.color, DiscardedColor2 ) ) Destroy ( gameObject );
+				else renderer.color = Color.Lerp ( renderer.color, DiscardedColor2, Time.deltaTime );
 			}
 		}
-		else if ( isPlayed ) renderer.color = Color.Lerp ( renderer.color, _playedColor, Time.deltaTime );
-		else renderer.color = Color.Lerp ( renderer.color, _availableColor, Time.deltaTime );
+		else if ( isPreviewDiscard ) renderer.color = Color.Lerp ( renderer.color, PreviewDiscardColor, Time.deltaTime * 2f );
+		else if ( isPlayed ) renderer.color = Color.Lerp ( renderer.color, PlayedColor, Time.deltaTime * 2f );
+		else renderer.color = Color.Lerp ( renderer.color, AvailableColor, Time.deltaTime * 2f );
 	}
 
 	private static bool SameColors (Color color1, Color color2)
