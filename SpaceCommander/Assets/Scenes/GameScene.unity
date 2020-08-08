@@ -1351,21 +1351,22 @@ MonoBehaviour:
     up to you to decide how best to plan your actions. The Actions are listed in
     the lineup below. On each round, you ahve the choice of PLAYing and action, WINDing
     to the next action in line, or REWINDing to any action on the list.
-  - 'When you PLAY and action, the Action will take effect. However, after the effect,
-    enemies will return fire. So be careful: there is only so much damage the Cruiser
-    can take. After and action is PLAYed, you woont be able to paly it again until
-    you REWIND.'
-  - 'When you WIND, you move to the next available action. However, it gives time
-    for the C.R.E.E.P.''s to gring in extra reinforcments. The WIND lets you choose
-    when to play which action - by skipping over them, you can save certain actions
-    for later.
+  - 'When you PLAY an action (button to the left), the Action will take effect. However,
+    after the effect, enemies will return fire. So be careful: there is only so much
+    damage the Cruiser can take. After and action is PLAYed, you woont be able to
+    paly it again until you REWIND.'
+  - 'When you WIND (button to the right), you move to the next available action.
+    However, it gives time for the C.R.E.E.P.''s to gring in extra reinforcments.
+    The WIND lets you choose when to play which action - by skipping over them, you
+    can save certain actions for later.
 
 '
-  - 'REWIND lets you get your options back online! Whenever you REWIND, you reroute
-    power to your action making them available again. But, it will cost you. The
-    more you REWIND, the more the C.R.E.E.P.''s will become enraged, increasing their
-    damage output. Also, each REWIND comes at the cost of the currect availabe action
-    - you wont be able to paly that action for the remainder of this mission!
+  - 'REWIND (clicking on your card) lets you get your options back online! Whenever
+    you REWIND, you reroute power to your action making them available again. But,
+    it will cost you. The more you REWIND, the more the C.R.E.E.P.''s will become
+    enraged, increasing their damage output. Also, each REWIND comes at the cost
+    of the currect availabe action - you wont be able to paly that action for the
+    remainder of this mission!
 
 '
   - Lets see how far you can make it. Good luck, Commander!
