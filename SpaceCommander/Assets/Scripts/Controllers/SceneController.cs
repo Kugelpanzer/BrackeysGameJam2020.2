@@ -39,6 +39,9 @@ public class SceneController : MonoBehaviour
             ResetLevel();
         }
 
-
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            GoToScene(0);
+        }
     }
 }
