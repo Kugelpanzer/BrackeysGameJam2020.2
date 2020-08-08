@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Fire!
   m_EditorClassIdentifier: 
   cardName: Default
-  description: Deal 3 damage to one target.
+  description: Deal 3 DMG to 1 target.
   value: 3
   image: {fileID: 21300000, guid: 2c17ddd894337d349906e3ccd4f046e3, type: 3}
   doDamage: 1

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Volley fire
   m_EditorClassIdentifier: 
   cardName: Default
-  description: Deal 1 dmg to 6 random targets.
+  description: Deal 1 DMG to 6 random targets.
   value: 3
   image: {fileID: 21300000, guid: 8d4533d0ff6698d4db5ad68177713d03, type: 3}
   doDamage: 1

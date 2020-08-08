@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Defensive Matrix
   m_EditorClassIdentifier: 
   cardName: Default
-  description: You and your fighters ignore the next 1 point of dmg.
+  description: You and your fighters ignore the next 1 DMG.
   value: 1
   image: {fileID: 21300000, guid: c03bc33723235914a9972a55250a1b79, type: 3}
   doDamage: 0

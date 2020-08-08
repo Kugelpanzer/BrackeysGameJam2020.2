@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Fighter Squadron
   m_EditorClassIdentifier: 
   cardName: Default
-  description: Place 3 fighters on the field (1dmg, 1 HP).
+  description: Place 3 fighters on the field (1 DMG, 1 HP).
   value: 3
   image: {fileID: 21300000, guid: 739f8f272cf540848a0bbd51211b3818, type: 3}
   doDamage: 0

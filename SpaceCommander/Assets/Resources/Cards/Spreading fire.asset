@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Spreading fire
   m_EditorClassIdentifier: 
   cardName: Default
-  description: Deal 1 damage to all enemies.
+  description: Deal 1 DMG to all enemies.
   value: 2
   image: {fileID: 21300000, guid: 9ea4354d30e42874ca0582cb6ff8f8c2, type: 3}
   doDamage: 1

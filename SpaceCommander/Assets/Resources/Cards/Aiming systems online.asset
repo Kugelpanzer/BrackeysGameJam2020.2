@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Aiming systems online
   m_EditorClassIdentifier: 
   cardName: Default
-  description: Deal 1 damage to 3 targets.
+  description: Deal 1 DMG to 3 targets.
   value: 3
   image: {fileID: 21300000, guid: 311b6877f2ac8c440aec1f18467b46f5, type: 3}
   doDamage: 1

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Nuklear launch
   m_EditorClassIdentifier: 
   cardName: Default
-  description: Deal 3 dmg to all (including you).
+  description: Deal 3 DMG to all (including you).
   value: 1
   image: {fileID: 21300000, guid: f6fcd82f7d735e44fa290013be0c07e9, type: 3}
   doDamage: 1
